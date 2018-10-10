@@ -1,10 +1,14 @@
 package com.example.demo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.bean.Address;
 import com.example.demo.bean.Class;
@@ -15,6 +19,8 @@ import com.example.demo.mapper.StudentMapper;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+
+
 public class SpringBootMybatisApplicationTests {
   @Autowired
    AddressMapper addressmapper;
@@ -40,8 +46,11 @@ public class SpringBootMybatisApplicationTests {
 		//this.addStudent();
 		//this.deleteStudent();
 		//this.updateStudent();
-		this.getStudent();
+		//this.getAddressByStudent();
 		//this.getStudentsByclass();
+		
+		//this.getAddressandClass();//根据姓名年龄查找
+		this.DeleteSomeAddress();//批量删除
 	}
 	
    public void addAddress(){
@@ -52,6 +61,7 @@ public class SpringBootMybatisApplicationTests {
    }	
    
    public void addClass(){
+	   
 	   Class classroom=new Class();
 	   classroom.setId(1234);
 	   classroom.setName("1234班");
@@ -116,7 +126,7 @@ public class SpringBootMybatisApplicationTests {
 	   
    }
    //一对一
-   public void getStudent(){
+   public void getAddressBystdent(){
 	   studentmapper.FindStudent(2);
    }
   
@@ -125,5 +135,23 @@ public class SpringBootMybatisApplicationTests {
 	   classmapper.getStudents(102);
    }
  
+   public void getAddressandClass(){
+	   Student student=new Student();
+	   student.setAge(66);
+	   student.setName("小明");
+	   studentmapper.FindStudentByAgeOrName(student);
+	   
+   }
    
+   public void DeleteSomeAddress(){
+	   List<Address> list=new ArrayList<Address>();
+	   Address a1=new Address();
+	   Address a2=new Address();
+	   a1.setId(100);
+	   a2.setId(101);
+	   list.add(a1);
+	   list.add(a2);
+	  addressmapper.DeleteAllById(list);
+	   
+   }
 }

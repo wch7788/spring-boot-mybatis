@@ -21,6 +21,17 @@ FROM t_address
 WHERE `a_id` = #{id} ;
 </delete>
 
+<delete id="DeleteAllById" parameterType="List">
+DELETE 
+FROM
+  `test`.`t_address` 
+WHERE `a_id` in  
+<foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+   #{item.id}
+</foreach>
+  
+</delete>
+
 <update id="update" parameterType="com.example.demo.bean.Address">
 UPDATE 
   t_address 

@@ -14,5 +14,7 @@ public interface StudentMapper {
 	public void update(Student student);
 	public Student FindStudent(int id);
 	public List<Student> FindStudentByCid(int id);
+	
+	public List<Student> FindStudentByAgeOrName(Student student);
 
 }

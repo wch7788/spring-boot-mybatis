@@ -10,6 +10,14 @@
 
 </resultMap> 
 
+<resultMap type="com.example.demo.bean.Student" id="ResultSTS">
+<result column="S_ID" property="id" jdbcType="INTEGER"/>
+<result column="S_NAME" property="name" jdbcType="VARCHAR"/>
+<result column="AGE" property="age" jdbcType="INTEGER"/>
+<association property="address" column="A_ID" select="com.example.demo.mapper.AddressMapper.Findbyid"/>
+<association property="classroom" column="C_ID" select="com.example.demo.mapper.ClassMapper.Findbyid"></association>
+</resultMap> 
+
 
  <insert id="add" parameterType="com.example.demo.bean.Student">
 INSERT INTO `test`.`t_student` (
@@ -72,7 +80,24 @@ FROM
 
 </select>  
 
-
+<select id="FindStudentByAgeOrName" parameterType="com.example.demo.bean.Student" resultMap="ResultSTS">
+SELECT 
+  `s_id`,
+  `s_name`,
+  `c_id`,
+  `a_id`,
+  `age` 
+FROM
+  `test`.`t_student` 
+  where 1=1
+  <if test="name!=null">
+  and `s_name` like #{name}
+  </if>
+  <if test="age!=null">
+  or age= #{age}
+  </if>
+    
+</select>
 
 
 </mapper>

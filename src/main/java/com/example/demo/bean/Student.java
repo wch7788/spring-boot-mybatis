@@ -5,6 +5,7 @@ public class Student {
 	private String name;
 	private int age;
 	private Address address;
+	private Class classroom;
 	public Student(int id, String name, int age, Address address) {
 		super();
 		this.id = id;
