@@ -46,11 +46,13 @@ public class SpringBootMybatisApplicationTests {
 		//this.addStudent();
 		//this.deleteStudent();
 		//this.updateStudent();
-		//this.getAddressByStudent();
+		//this.FindStudent();
+		
+		//this.getAddressBystudent();
 		//this.getStudentsByclass();
 		
-		//this.getAddressandClass();//根据姓名年龄查找
-		this.DeleteSomeAddress();//批量删除
+		this.getAddressandClass();//根据姓名年龄查找
+		//this.DeleteSomeAddress();//批量删除
 	}
 	
    public void addAddress(){
@@ -73,9 +75,7 @@ public class SpringBootMybatisApplicationTests {
 	   student.setId(153);
 	   student.setAge(66);
 	   student.setName("王二");
-	   Address address=new Address();
-	   address.setId(215332);
-	   student.setAddress(address);
+	  
 	   studentmapper.add(student);
 	   
 	   
@@ -125,12 +125,17 @@ public class SpringBootMybatisApplicationTests {
 	   classmapper.Findbyid(103);
 	   
    }
-   //一对一
-   public void getAddressBystdent(){
+   
+   public void FindStudent(){
+	   studentmapper.FindById(2);
+   }
+   
+   //一对一 查出学生及地址
+   public void getAddressBystudent(){
 	   studentmapper.FindStudent(2);
    }
   
-   
+   //一对多查出班级下的学生以及其地址
  public void getStudentsByclass(){
 	   classmapper.getStudents(102);
    }
@@ -138,7 +143,7 @@ public class SpringBootMybatisApplicationTests {
    public void getAddressandClass(){
 	   Student student=new Student();
 	   student.setAge(66);
-	   student.setName("小明");
+	   
 	   studentmapper.FindStudentByAgeOrName(student);
 	   
    }

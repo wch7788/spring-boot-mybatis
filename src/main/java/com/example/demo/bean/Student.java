@@ -6,13 +6,16 @@ public class Student {
 	private int age;
 	private Address address;
 	private Class classroom;
-	public Student(int id, String name, int age, Address address) {
+	
+	public Student(int id, String name, int age, Address address, Class classroom) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.age = age;
 		this.address = address;
+		this.classroom = classroom;
 	}
+
 	public Student() {
 		super();
 	}
@@ -39,6 +42,14 @@ public class Student {
 	}
 	public void setAddress(Address address) {
 		this.address = address;
+	}
+
+	public Class getClassroom() {
+		return classroom;
+	}
+
+	public void setClassroom(Class classroom) {
+		this.classroom = classroom;
 	}
 	
 	
