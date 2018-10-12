@@ -7,10 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form id="form1" name="myform"  method="post" action="updateConfirm">
+<form id="form" name="myform"  method="post" action="updateConfirm">
 
-姓名:<input type="text" name="name"><br><br>
-年龄:<input type="text" name="age"><br><br>
+姓名:<input type="text" name="name" value="${thisstudent.name}"><br><br>
+年龄:<input type="text" name="age" value="${thisstudent.age}"><br><br>
 <!-- 班级：<input type="text" name="classroom"><br><br>
 地址：<input type="text" name="address"><br><br> -->
 <input type="submit" value="确定修改"/>

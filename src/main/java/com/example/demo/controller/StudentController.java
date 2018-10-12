@@ -43,6 +43,8 @@ public class StudentController {
 		
      }
 	
+	
+	
 	//删除功能
 	@RequestMapping(value="delete")
 	public ModelAndView delete(HttpServletRequest request,HttpServletResponse response){
@@ -56,9 +58,13 @@ public class StudentController {
 	//修改跳转页面
 	
 	@RequestMapping(value="update")
-	public String update(HttpServletRequest request,HttpServletResponse response){
+	public ModelAndView update(HttpServletRequest request,HttpServletResponse response){
 		studentid=Integer.valueOf(request.getParameter("id"));
-		return "update";
+		ModelAndView mv=new ModelAndView();
+		Student student=studentmapper.FindOneStudentById(studentid);
+		mv.addObject("thisstudent", student);
+		mv.setViewName("update");
+		return mv;
 		
 	}
 	

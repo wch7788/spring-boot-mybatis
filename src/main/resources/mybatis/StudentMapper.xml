@@ -73,15 +73,32 @@ WHERE `s_id` = #{id} ;
 
  <select id="FindById" parameterType="int" resultMap="StudentMap">
  SELECT 
-  `s_id`,
+   `s_id`,
   `s_name`,
-  `age`
+  `c_id`,
+  `age`,
+  `a_id`
    
 FROM
   `test`.`t_student` 
   WHERE `s_id` = #{id} ;
 
 </select> 
+
+
+ <select id="FindOneStudentById" parameterType="int" resultMap="ResultSTS">
+ SELECT 
+   `s_id`,
+  `s_name`,
+  `c_id`,
+  `age`,
+  `a_id`
+   
+FROM
+  `test`.`t_student` 
+  WHERE `s_id` = #{id} ;
+
+</select>
 
  <select id="FindStudent" parameterType="int" resultMap="ResultST">
  SELECT 

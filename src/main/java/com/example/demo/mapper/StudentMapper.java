@@ -13,6 +13,7 @@ public interface StudentMapper {
 	public void update(Student student);
 	public void updateAll(Student student);
 	public void FindById(int id);
+	public Student FindOneStudentById(int id);
 	public Student FindStudent(int id);
 	public List<Student> FindStudentByCid(int id);
 	public List<Student> FindAllStudent();
